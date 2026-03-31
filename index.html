@@ -1,1 +1,295 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Densy Pavón - Diseño Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #e0e5ec;
+            --text-main: #37474f;
+            --text-dim: #78909c;
+            --accent-primary: #5c8df6; 
+            --sidebar-bg: #f0f3f7;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            justify-content: center;
+            padding: 15mm 0;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            background-color: var(--bg-color);
+            display: grid;
+            grid-template-columns: 32% 68%;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.1);
+            border-radius: 30px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            padding: 35px 25px;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .photo-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 25px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            background: #000;
+        }
+
+        .photo { width: 100%; height: 100%; object-fit: cover; border-radius: 20px; }
+
+        .light {
+            position: absolute;
+            width: 5px; height: 5px;
+            background: radial-gradient(circle, #ffffff, #eaeaea);
+            border-radius: 50%;
+            box-shadow: 0 0 6px #fff, 0 0 12px #fff;
+            animation: moveBorder 6s linear infinite;
+        }
+
+        @keyframes moveBorder {
+            0%   { top: 0; left: 0; }
+            25%  { top: 0; left: calc(100% - 5px); }
+            50%  { top: calc(100% - 5px); left: calc(100% - 5px); }
+            75%  { top: calc(100% - 5px); left: 0; }
+            100% { top: 0; left: 0; }
+        }
+
+        .sidebar-title {
+            font-size: 13px; font-weight: 700; margin: 25px 0 12px 0;
+            text-transform: uppercase; color: var(--text-main);
+            border-bottom: 2px solid var(--accent-primary);
+            display: inline-block; padding-bottom: 2px;
+        }
+
+        .contact-item {
+            font-size: 10.5px; margin-bottom: 10px; display: flex; align-items: center; gap: 10px;
+        }
+
+        .contact-item b { color: var(--accent-primary); font-size: 15px; min-width: 20px; text-align: center; }
+
+        .list-item {
+            font-size: 10.5px; margin-bottom: 8px; padding-left: 10px;
+            border-left: 2px solid var(--accent-primary);
+        }
+
+        /* BARRAS DE IDIOMA */
+        .skill-bar-container { margin-bottom: 12px; }
+        .skill-name { font-size: 10.5px; font-weight: 600; color: var(--text-main); display: flex; justify-content: space-between; }
+        .bar-bg { width: 100%; height: 6px; background: #d1d9e6; border-radius: 10px; margin-top: 4px; overflow: hidden; }
+        .bar-fill { height: 100%; background: var(--accent-primary); border-radius: 10px; }
+
+        /* --- MAIN CONTENT --- */
+        .main-content { padding: 35px 40px; background-color: var(--bg-color); }
+
+        .header { margin-bottom: 25px; text-align: center; }
+        .header-name { font-size: 25px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; }
+        .header-cargo { font-family: 'Roboto Mono', monospace; font-size: 10px; letter-spacing: 3px; color: var(--text-dim); }
+
+        .section { margin-bottom: 20px; }
+        .section-header {
+            font-size: 15px; font-weight: 700; margin-bottom: 12px;
+            text-transform: uppercase; display: flex; align-items: center;
+        }
+        .section-header::after { content: ''; height: 1px; flex-grow: 1; background: var(--accent-primary); margin-left: 15px; opacity: 0.2; }
+
+        .objectives-panel {
+            padding: 18px; border-radius: 18px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border-left: 5px solid var(--accent-primary);
+        }
+
+        .item {
+            margin-bottom: 12px; padding: 8px 15px;
+            border-left: 2px solid #d1d9e6;
+            transition: all 0.3s ease;
+        }
+
+        .item:hover {
+            border-left: 2px solid var(--accent-primary);
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateX(8px);
+            border-radius: 0 15px 15px 0;
+        }
+
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; }
+        .item-title { font-size: 13px; font-weight: 700; }
+        .item-date { font-family: 'Roboto Mono', monospace; font-size: 9px; color: var(--text-dim); font-weight: 700; }
+        .item-sub { font-size: 11.5px; color: var(--accent-primary); font-weight: 600; }
+        .item-desc { font-size: 11px; color: var(--text-dim); line-height: 1.4; }
+
+        @media print {
+            body { padding: 0; }
+            .page { box-shadow: none; border: none; border-radius: 0; width: 100%; }
+            .bar-fill { -webkit-print-color-adjust: exact; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <div class="sidebar">
+        <div class="photo-container">
+            <img src="11.jpg" class="photo" alt="Foto">
+            <div class="light"></div>
+        </div>
+        
+        <div class="sidebar-title">Contacto</div>
+        <div class="contact-item"><b>📍</b> <span>Nueva Valladolid Capiro, Comayagua.</span></div>
+        <div class="contact-item"><b>📞</b> <span>+504 92494307</span></div>
+        <div class="contact-item"><b>📱</b> <span>Opcional: +504 3258-8172</span></div>
+        <div class="contact-item"><b>📧</b> <span>densyoharap@gmail.com</span></div>
+        <div class="contact-item"><b>🆔</b> <span>0701-1999-00022</span></div>
+        <div class="contact-item"><b>👤</b> <span>29 años | Soltero</span></div>
+
+        <div class="sidebar-title">Idiomas</div>
+        <div class="skill-bar-container">
+            <div class="skill-name"><span>Español</span> <span>Nativo</span></div>
+            <div class="bar-bg"><div class="bar-fill" style="width: 100%;"></div></div>
+        </div>
+        <div class="skill-bar-container">
+            <div class="skill-name"><span>Inglés</span> <span>Intermedio (B2)</span></div>
+            <div class="bar-bg"><div class="bar-fill" style="width: 70%;"></div></div>
+        </div>
+
+        <div class="sidebar-title">Habilidades</div>
+        <div class="list-item">Manejo de herramientas tecnológicas</div>
+        <div class="list-item">Motocicleta y licencia propia vigente</div>
+        <div class="list-item">Aprendizaje rápido y comunicación</div>
+        <div class="list-item">Disponibilidad inmediata</div>
+
+        <div class="sidebar-title">Informática</div>
+        <div class="list-item">Sistemas CRM / Web Chat</div>
+        <div class="list-item">Microsoft Office Intermedio</div>
+        <div class="list-item">Herramientas de Delivery</div>
+
+        <div class="sidebar-title">Referencias</div>
+        <p style="font-size: 10px; color: var(--text-dim); line-height: 1.4;">
+            Mercedes Ruiz, Abogada<br> Tel: +504 8768 7496<br><br>
+            Mas información disponible de inmediato ante solicitud.</p>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <div class="header-name">Densy Mauricio Pavón Ohara</div>
+            <div class="header-cargo">Agente Bilingüe Call Centers</div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">Objetivos</div>
+            <div class="objectives-panel">
+                <p style="font-size: 12.5px; line-height: 1.6; text-align: justify;">Como persona aspiro a crecer personal y profesionalmente, en un ambiente grato, que se adecue a mis habilidades, siendo capaz de cumplir con las metas propuestas y las responsabilidades presentadas por mi superior.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">Experiencia Laboral</div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Agente Preventas</span>
+                    <span class="item-date">02/feb/2026 - 15/feb/2026</span>
+                </div>
+                <div class="item-sub">Grupo AJE</div>
+                <p class="item-desc">Gestión de actividades de preventa de productos de consumo masivo.</p>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Operario de Producción</span>
+                    <span class="item-date">06/may/2025 - 07/feb/2026</span>
+                </div>
+                <div class="item-sub">Dinant Exports Comayagua</div>
+                <p class="item-desc">Producción en planta de snacks y alimentos.</p>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Despachador</span>
+                    <span class="item-date">15/ene/2025 - 15/mar/2025</span>
+                </div>
+                <div class="item-sub">Gasolinera UNO (2 meses)</div>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Agente de Call Center</span>
+                    <span class="item-date">03/ago/2022 - 03/ago/2024</span>
+                </div>
+                <div class="item-sub">Farmacias KIELSA</div>
+                <p class="item-desc">Atención al cliente vía Web Chat y llamadas CRM, venta de medicamentos.</p>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Servicios Múltiples</span>
+                    <span class="item-date">07/mar/2022 - 07/jul/2022</span>
+                </div>
+                <div class="item-sub">Tiendas CARRIÓN (4 meses)</div>
+                <p class="item-desc">Cajero de parqueo, mantenimiento y delivery.</p>
+            </div>
+
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Vendedor de Carnes</span>
+                    <span class="item-date">Enero 2018 - Diciembre 2021</span>
+                </div>
+                <div class="item-sub">Negocio Familiar</div>
+                <p class="item-desc">Venta de lácteos y carnes con envíos a domicilio en motocicleta propia.</p>
+            </div>
+
+            
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Agente de Ventas</span>
+                    <span class="item-date">Enero 2017 - Marzo 2017</span>
+                </div>
+                <div class="item-sub">Ferretería Santa Fe de Danlí</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header">Formación Académica</div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Educación Universitaria</span>
+                    <span class="item-date">2015 - 2017</span>
+                </div>
+                <div class="item-sub">CEUTEC</div>
+                <p class="item-desc">Agente Bilingüe en Call Centers</p>
+            </div>
+            <div class="item">
+                <div class="item-header">
+                    <span class="item-title">Educación Secundaria</span>
+                    <span class="item-date">2008 - 2014</span>
+                </div>
+                <div class="item-sub">Inst. Polivalente Dr. Presentación Centeno</div>
+                <p class="item-desc">Perito Mercantil y Contador Público</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
